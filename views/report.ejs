@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>project</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="/public/assets/css/styles.css">
+</head>
+
+<body>
+    <header></header>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top border rounded-0 clean-navbar" style="background: var(--bs-white);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="margin-left: 1%;"><strong>C</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="container" id="sales-container">
+            <div class="work-experience group">
+                <h2 class="text-center">Sales Reports</h2>
+                <div class="heading">
+                    <h2 class="text-start"></h2>
+                </div>
+                <div class="item">
+                    <div class="accordion" role="tablist" id="accordion-1">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="false" aria-controls="accordion-1 .item-1" style="font-weight: bold;"><br><span style="color: rgb(33, 37, 41); background-color: rgb(255, 255, 255);">Quarterly Sales Report</span><br><br></button></h2>
+                            <div class="accordion-collapse collapse item-1" role="tabpanel" data-bs-parent="#accordion-1">
+                                <div class="accordion-body">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="text-center" style="margin-top: 10px;">
+                                                    <form method="post" action="/r3">
+                                                        <label class="form-label" >Enter a year:&nbsp; &nbsp;</label>
+                                                        <input type="number" name="year"> 
+                                                        <input type="submit" class="btn btn-primary" value="View Report" />
+                                                    </form>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-2" aria-expanded="false" aria-controls="accordion-1 .item-2" style="font-weight: bold;">Products with most number of sales</button></h2>
+                            <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#accordion-1">
+                                <div class="accordion-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 500px;">Products with most number of sales are<br></td>
+                                                    <td class="text-center"></td>
+                                                </tr>
+                                                <tr></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-3" aria-expanded="false" aria-controls="accordion-1 .item-3" style="font-weight: bold;">Product category with most orders </button></h2>
+                            <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#accordion-1">
+                                <div class="accordion-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 500px;">Product category with most orders is&nbsp;</td>
+                                                    <td class="text-center"><%= prod[0][0].category_name %></td>
+                                                </tr>
+                                                <tr></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-4" aria-expanded="false" aria-controls="accordion-1 .item-4" style="font-weight: bold;">Given a product, time period with most interest to it </button></h2>
+                            <div class="accordion-collapse collapse item-4" role="tabpanel" data-bs-parent="#accordion-1">
+                                <div class="accordion-body">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="text-center" style="margin-top: 10px;"><label class="form-label">Select a product:&nbsp; &nbsp;</label><select>
+                                                    <form method="post" action="/r2">
+                                                        <optgroup label="Select a product">
+                                                            <option value="12" selected="">Product1</option>
+                                                            <option value="13">Product 2</option>
+                                                            <option value="14">Product3</option>
+                                                        </optgroup>
+                                                    </form>
+                                                    
+                                                    </select><a class="btn btn-primary" role="button" style="margin-left: 10px;" href="reportproductperiod.html">View Report</a>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" role="tab"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-5" aria-expanded="true" aria-controls="accordion-1 .item-5" style="font-weight: bold;">Customer - order report&nbsp; </button></h2>
+                            <div class="accordion-collapse collapse show item-5" role="tabpanel" data-bs-parent="#accordion-1">
+                                <div class="accordion-body">
+                                    <p class="mb-0">Generate a customer-order report</p>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="text-center" style="margin-top: 10px;"><label class="form-label">Select a customer:&nbsp; &nbsp;</label><select>
+                                                        <optgroup label="Select a sutomer">
+                                                            <option value="12" selected="">Customer1</option>
+                                                            <option value="13">Customer2</option>
+                                                            <option value="14">Customer3</option>
+                                                        </optgroup>
+                                                    </select><a class="btn btn-primary" role="button" style="margin-left: 10px;" href="reportcustomerorder.html">View Report</a>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/assets/js/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/public/assets/js/product.js"></script>
+    <script src="/public/assets/js/reports.js"></script>
+    <script src="/public/assets/js/scripts.js"></script>
+    <script src="/public/assets/js/tableoperations.js"></script>
+</body>
+
+</html>

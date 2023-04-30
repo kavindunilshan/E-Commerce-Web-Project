@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>project</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="/public/assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top border rounded-0 clean-navbar" style="background: var(--bs-white);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="margin-left: 1%;"><strong>C</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+                    <li class="nav-item"><a class="btn btn-primary" role="button" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+            <header></header>
+        </div>
+    </nav>
+    <section id="section-cart"></section>
+    <div></div>
+    <form id="productform" action="/proceedtocheckout" method="post">
+        <input type="hidden" name="tot" value="<%= total %>">
+        <section id="cart-add" class="section-p1">
+            <div>
+                <h1 id="checkouthead">Checkout</h1>
+            </div>
+            <div class="row" style="padding-left: 40px;padding-right: 40px;">
+                <div class="col-lg-7 col-xxl-6">
+                    <div id="div-form" class="heading">
+                        <h4>Customer details</h4>
+                        <div>
+                                <div class="mb-3"><label class="form-label" for="message">Contact Number</label><input class="form-control" type="text" name="contact"></div>
+                                <div class="mb-3"><label class="form-label" for="message">Address</label><input class="form-control" type="text" name="address"></div>
+                                <div class="mb-3"><label class="form-label" for="message">City</label>
+                                    <select class="form-select" id="city-select" name="city">
+                                        <option value="--" selected="">Select City</option>
+                                        <% for(var count = 0; count < prod.length; count++) { %>
+                                            <option value="<%= est[count] %>"><%= prod[count].city_name %></option>
+                                        <% } %>
+                                    </select></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col" id="rightcheckout">
+                    <div id="paydel" style="margin-top: 40px;">
+                        <div><label class="form-label">Select Payment Method</label>
+                            <select class="form-select" id="subject" name="pmeth">
+                                <optgroup label="Select Payment Method">
+                                    <option value="Cash on Delivery">Cash On Delivery</option>
+                                    <option value="Card">Card</option>
+                                </optgroup>
+                            </select></div>
+                        <div style="margin-top: 10px;"><label class="form-label">Select Delivery Method</label><select class="form-select" id="subject-1">
+                                <optgroup label="Select Delivery Method" name="meth">
+                                    <option value="Store Pickup">Store Pickup</option>
+                                    <option value="Delivery">Delivery</option>
+                                </optgroup>
+                            </select></div>
+                        <div style="margin-top: 10px;"></div>
+                    </div>
+                    <div>
+                        <div class="table-responsive" id="deliverytime-table">
+                            <table class="table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr></tr>
+                                    <tr>
+                                        <td>Estimated delivery time</td>
+                                        <td class="text-center" id="delivery-time">-------</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="subtotal">
+                        <div class="table-responsive" id="checkout-table">
+                            <table class="table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cart Subtotal</td>
+                                        <td>$<%= total %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping&nbsp;</td>
+                                        <td>Free</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total</strong></td>
+                                        <td>$<%= total %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <input type="submit" class="btn btn-primary" style="float: right; clear: both;" value="Place Order"/>
+    </form>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/product.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/tableoperations.js"></script>
+</body>
+
+</html>

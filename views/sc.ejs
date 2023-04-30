@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>project</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+</head>
+
+<body>
+    <header></header>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top border rounded-0 clean-navbar" style="background: var(--bs-white);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="margin-left: 1%;"><strong>C</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+                    <% if(!session.user_id) { %>
+                    <li class="nav-item"><a class="btn btn-primary" role="button" href="/login">Login</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="btn btn-primary" role="button" href="">Logged In</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="margin-top: 100px;">
+        <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto">
+            <div class="text-center" id="div-bg">
+                <p class="fw-bold text-success mb-2">Top choice</p>
+                <h1 class="fw-bold">Get the best products at the best prices with us.</h1>
+
+                <form method="post" action="/productdata">
+                    <label class="form-label" id="label-select">Select Product Sub Category</label>
+                    <select class="form-select" id="subject" name="dropdown1">
+                        <optgroup label="Select Product Category">
+                            <% for(var count = 0; count < prod.length; count++) { %>
+                                <option value='<%= prod[count].sub_category_id %>'><%= prod[count].sub_category_name %></option>
+                            <% } %>
+                        </optgroup>
+                    </select>
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="Shop" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

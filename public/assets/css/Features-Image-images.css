@@ -1,0 +1,33 @@
+.fit-cover {
+  object-fit: cover;
+}
+
+.productlink {
+  text-decoration: none;
+  color: var(--bs-gray-dark);
+}
+
+#div-subcategory {
+  display: none;
+}
+
+#label-select-subcategory, #subcategory-select {
+  display: none;
+}
+
+#category-select {
+  margin-bottom: 10px;
+}
+
+.center {
+}
+
+..increase-btn {
+}
+
+.quantity-input {
+  text-align: center;
+  border: none;
+  outline: none;
+}
+

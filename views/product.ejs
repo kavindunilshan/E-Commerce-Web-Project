@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>project</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+</head>
+
+<body>
+    <header></header>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top border rounded-0 clean-navbar" style="background: var(--bs-white);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="margin-left: 1%;"><strong>C</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+                    <li class="nav-item"><a class="btn btn-primary" role="button" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="section-cart">
+        <div>
+            <div class="container py-4 py-xl-5">
+                <div class="row row-cols-1 row-cols-md-2">
+                    <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 300px;" src="assets/img/apple-g682998678_640.jpg"></div>
+                    <div class="col d-flex flex-column justify-content-center">
+                        <div class="text-center text-md-start d-flex flex-column align-items-center align-items-md-start mb-5">
+                            <div>
+                                <form method="post" action="/addtocart">
+                                    <input type="hidden" name="pid" value="<%- pid %>">
+                                    <h4><%= ptitle %></h4>
+                                    <p><%= pdes %></p>
+
+                                    <div><label class="form-label">Select Variant</label>
+                                        <select class="form-select" id="variant-select" name="prs">
+                                                <% for(var count = 0; count < prod.length; count++) { %>
+                                                    <option value='<%= JSON.stringify(prod[count]) %>'><%= prod[count].variants %></option>
+                                                <% } %>
+                                        </select>
+                                    </div>
+                                        
+                                    <div id="itemdiv"><label class="form-label" id="noitems" style="font-weight: bold;">Number of items</label>
+                                        <div class="row">
+                                            <div class="col" style="text-align: center;margin-bottom: 10px;">
+                                                <button class="btn btn-primary decreaseButton" id="decrease-btn" type="button" style="border-radius: 30%;background: var(--bs-gray-400);border-color: var(--bs-border-color-translucent);color: var(--bs-secondary);font-weight: bold;">&nbsp;-&nbsp;</button>
+                                                    <input type="number" name="varientList" id="no-items" class="quantity-input" value="1" min="0">
+                                                <button class="btn btn-primary increaseButton" id="increase-btn" type="button" style="border-radius: 30%;background: var(--bs-gray-400);border-color: var(--bs-border-color-translucent);color: var(--bs-secondary);font-weight: bold;">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="table-responsive">
+                                            <table class="table" id="product-price-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Price per product</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td id="price-per-product">Cell 1</td>
+                                                        <td id="total-price">Cell 2</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary" value="Add to Cart" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/assets/js/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/public/assets/js/product.js"></script>
+    <script src="/public/assets/js/scripts.js"></script>
+    <script src="/public/assets/js/tableoperations.js"></script>
+</body>
+
+</html>

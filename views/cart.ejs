@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>project</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top border rounded-0 clean-navbar" style="background: var(--bs-white);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="margin-left: 1%;"><strong>C</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="btn btn-primary" role="button" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header></header>
+    <form id="productform" action="/checkout" method="post">
+    <section id="section-cart">
+        <div id="div-table">
+            <div class="table-responsive" id="table">
+                <table class="table" id="my-table">
+                    <thead style="background: var(--bs-table-bg);border-right-color: var(--bs-table-color);">
+                        <tr>
+                            <th class="text-center">Remove</th>
+                            <th style="border-style: solid;">Product</th>
+                            <th>Price&nbsp;</th>
+                            <th>Quantity</th>
+                            <th class="text-center">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var count = 0; count < prod.length; count++) { %>
+                            <tr>
+                                <td class="text-center cancel" style="margin-left: 0px;">
+                                    <a style="cursor: pointer;">
+                                        <form method="post" action="/update">
+                                            <input type="hidden" name="prs" value="<%= JSON.stringify(prod[count]) %>">
+                                            <input type="submit" class="btn btn-primary" value="Remove" />
+                                        </form>
+                                    </a>
+                                </td>
+                                <td><%=prod[count].title%></td>
+                                <td><%=prod[count].price%></td>
+                                <td><%=prod[count].amount%></td>
+                                <td class="text-center"><%=prod[count].price * prod[count].amount%></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>updateTotalTable()</script>
+    </section>
+    <section id="cart-add" class="section-p1">
+        <h3 id="heading2" style="transform: translate(0px) scale(0.88);">Cart Total</h3>
+        <div id="subtotal">
+            <div class="table-responsive" id="total-table">
+                <table class="table">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Shipping&nbsp;</td>
+                            <td>Free</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td>$<% var total = 0; 
+                                for(var count = 0; count < prod.length; count++) { 
+                                    total += parseFloat(prod[count].price);
+                                } %> <%=total.toFixed(2)%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                <input type="hidden" name="tot" value="<%=total.toFixed(2)%>">
+                <button type="submit" class="btn btn-primary" style="float: right; clear: both; margin-right: 10%;">Proceed to Checkout</button>
+            </form>
+        </div>
+    </section>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/assets/js/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/public/assets/js/product.js"></script>
+    <script src="/public/assets/js/scripts.js"></script>
+    <script src="/public/assets/js/tableoperations.js"></script>
+</body>
+
+</html>

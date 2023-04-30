@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>project</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+</head>
+
+<body>
+    <header></header>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top border rounded-0 clean-navbar" style="background: var(--bs-white);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="margin-left: 1%;"><strong>C</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+                    <% if(!session.user_id) { %>
+                    <li class="nav-item"><a class="btn btn-primary" role="button" href="/login">Login</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="btn btn-primary" role="button" href="">Logged In</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container py-4 py-xl-5">
+        <div class="row mb-5" style="margin-top: 5%;">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>Product Items</h2>
+                <p class="w-lg-50"></p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <% for(var count = 0; count < prod.length; count++) { %>
+                    <div class="col">
+                        <form id="productform" action="/productvarientdata" method="post">
+                            <input type="hidden" name="pid" value="<%- prod[count].product_id %>">
+                            <input type="hidden" name="ptitle" value="<%- prod[count].title %>">
+                            <input type="hidden" name="pdes" value="<%- prod[count].product_description %>">
+                            <div>
+                                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/headphones-g812dfd7bb_1920.jpg">
+                                    <div class="card-body p-4">
+                                        <h5 class="card-title"><%- prod[count].title %></h5>
+                                        <div class="d-flex">
+                                            <div>
+                                                <p class="fs-3 fw-bold mb-0"><%- prod[count].brand_name %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit">View product</button>
+                            </div>
+                        </form>
+                    </div>
+                <% } %>
+        </div>
+    </div>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
